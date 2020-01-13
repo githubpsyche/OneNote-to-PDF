@@ -1,0 +1,51 @@
+Stored Info
+
+Plugin Section:
+1-a9942182-75ef-4416-abf5-91c2f03fda35
+
+Test Page:
+1-780cd932db4c0ede0e8e6aa46696f4da!1-a9942182-75ef-4416-abf5-91c2f03fda35
+
+Test Page URL:
+onenote:https://princetonu-my.sharepoint.com/personal/jgunn_princeton_edu/Documents/Jordan's%20Notebook/OneNote%20Plugin.one#Test%20Page&section-id=cebe08d6-5f4a-4ec8-a13d-fbf014c43afc&page-id=7d1ab2a9-5b8d-4a6a-a5b8-75dc7e00ba72&end
+
+True URL:
+https://princetonu-my.sharepoint.com/personal/jgunn_princeton_edu/Documents/Jordan's%20Notebook?wd=target%28OneNote%20Plugin.one%7Ccebe08d6-5f4a-4ec8-a13d-fbf014c43afc%2FTest%20Page%7C7d1ab2a9-5b8d-4a6a-a5b8-75dc7e00ba72%2F%29
+
+See List of Pages in Section:
+https://graph.microsoft.com/v1.0/me/onenote/sections/1-a9942182-75ef-4416-abf5-91c2f03fda35/pages
+
+Update Page Content:
+PATCH
+
+https://graph.microsoft.com/v1.0/me/onenote/pages/1-780cd932db4c0ede0e8e6aa46696f4da!1-a9942182-75ef-4416-abf5-91c2f03fda35/content
+
+BODY:
+[
+  {
+    'target':'body',
+    'action':'append',
+    'content':'<p data-id="last-child">New paragraph appended to the div</p>'
+  }
+]
+
+Code Sample:
+
+endpoint = 'me/onenote/pages/1-780cd932db4c0ede0e8e6aa46696f4da!1-a9942182-75ef-4416-abf5-91c2f03fda35/content'
+headers = {'SdkVersion': 'sample-python-flask',
+           'x-client-SKU': 'sample-python-flask',
+           'client-request-id': str(uuid.uuid4()),
+           'return-client-request-id': 'true',
+           'Content-type': 'application/json'}
+body = '''[
+{
+'target':'body',
+'action':'append',
+'content':'<p data-id="last-child">New paragraph appended to the div</p>'
+}
+]'''
+graphdata = MSGRAPH.patch(endpoint, data=body, headers=headers, content_type='application/json').data
+return flask.render_template('graphcall.html',
+                             graphdata=graphdata,
+                             endpoint=config.RESOURCE + config.API_VERSION + '/' + endpoint,
+                             sample='Flask-OAuthlib')
