@@ -3,8 +3,8 @@ In a production deployment, this information should be saved in a database or
 other secure storage mechanism.
 """
 
-CLIENT_ID = 'ffaac8c0-28b0-45e6-8327-b38ea2629f9c'
-CLIENT_SECRET = 'K[gu6OOsL53CQldlYukmXi:-7FlIy.7.'
+CLIENT_ID = 'ENTER_YOUR'
+CLIENT_SECRET = 'ENTER_YOUR'
 REDIRECT_URI = 'http://localhost:5000/login/authorized'
 
 # AUTHORITY_URL ending determines type of account that can be authenticated:
